@@ -1,4 +1,4 @@
-package u1171639.java.view;
+package u1171639.java.view.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import u1171639.java.controller.Controller;
+import u1171639.java.view.ViewManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.util.Callback;

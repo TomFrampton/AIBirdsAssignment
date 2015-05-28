@@ -1,4 +1,4 @@
-package u1171639.java.view;
+package u1171639.java.view.controller;
 
 import org.springframework.stereotype.Component;
 

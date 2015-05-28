@@ -11,6 +11,14 @@
     <!-- View Controllers -->
     <!-- <bean id="agentSelectionController" class="u1171639.java.view.AgentSelectionController" /> -->
     
+    <!-- Learning Agents -->
+    <bean id="naiveBayesAgent" class="u1171639.java.agent.NaiveBayesAgent" />
+    <bean id="regressionAgent" class="u1171639.java.agent.RegressionAgent" />
+    
+    <!-- Games -->
+    <bean id="stubbedGame" class="u1171639.java.game.StubbedGame" />
+    <bean id="aiBirdsGame" class="u1171639.java.game.AIBirdsGame" />
+    
     <!-- View Manager -->
     <bean id="viewManager" class="u1171639.java.view.ViewManager" />
     
@@ -20,8 +28,20 @@
     
     <!-- Application Controller -->
     <bean id="controller" class="u1171639.java.controller.Controller">
-    <constructor-arg name="view" ref="javaFxView" />
+    	<constructor-arg name="view" ref="javaFxView" />
+    	<constructor-arg name="game" ref="stubbedGame" />
+    	<constructor-arg name="agents">
+    		<list>
+    			<ref bean="naiveBayesAgent" />
+    			<ref bean="regressionAgent" />
+    		</list>
+    	</constructor-arg>
     </bean>
+    
+    
+    
+    
+    
     
     
     
