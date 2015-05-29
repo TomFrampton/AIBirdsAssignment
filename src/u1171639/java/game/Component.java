@@ -1,34 +1,17 @@
 package u1171639.java.game;
 
 public class Component {
-	private double xPos;
-	private double yPos;
+	private Position position;
 	
-	/**
-	 * @return the xPos
-	 */
-	public double getxPos() {
-		return xPos;
+	public Component(Position position) {
+		this.position = position;
 	}
-	
-	/**
-	 * @param xPos the xPos to set
-	 */
-	public void setxPos(double xPos) {
-		this.xPos = xPos;
+
+	public Position getPosition() {
+		return position;
 	}
-	
-	/**
-	 * @return the yPos
-	 */
-	public double getyPos() {
-		return yPos;
-	}
-	
-	/**
-	 * @param yPos the yPos to set
-	 */
-	public void setyPos(double yPos) {
-		this.yPos = yPos;
+
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 }
