@@ -1,4 +1,4 @@
-package u1171639.java;
+package u1171639.java.exception;
 
 public class ComponentsNotDefinedException extends Exception {
 	

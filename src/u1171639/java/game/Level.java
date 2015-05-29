@@ -2,7 +2,7 @@ package u1171639.java.game;
 
 import java.util.List;
 
-import u1171639.java.ComponentsNotDefinedException;
+import u1171639.java.exception.ComponentsNotDefinedException;
 
 public class Level {
 	private List<Pig> pigs;
