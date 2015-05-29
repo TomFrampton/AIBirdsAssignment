@@ -33,15 +33,21 @@ public abstract class ViewController {
 		this.view = view;
 	}
 	
+	public Controller getController() {
+		return this.controller;
+	}
+	
 	public void showView() {
 		if(this.view == null) {
 			this.loadFxmlView(this.getViewName());
+			this.initialise();
 		}
 		
 		this.viewManager.showScreen(this);
 	}
 	
 	public abstract String getViewName();
+	public abstract void initialise();
 	
 	protected void loadFxmlView(String fxmlResource) {
 		FXMLLoader fxmlLoader = new FXMLLoader(ViewController.class.getClass().getResource("/u1171639/fxml/" + fxmlResource));

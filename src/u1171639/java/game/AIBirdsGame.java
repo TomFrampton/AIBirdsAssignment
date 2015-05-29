@@ -1,6 +1,6 @@
 package u1171639.java.game;
 
-public class AIBirds implements Game {
+public class AIBirdsGame implements Game {
 
 	@Override
 	public Level getNextLevelInfo() {

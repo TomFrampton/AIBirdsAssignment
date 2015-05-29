@@ -11,7 +11,6 @@ import u1171639.java.view.View;
 
 public class Controller {
 	private View view;
-	private Game game;
 	private List<Agent> agents;
 	
 	public Controller() {
@@ -20,8 +19,11 @@ public class Controller {
 	
 	public Controller(View view, Game game, List<Agent> agents) {
 		this.view = view;
-		this.game = game;
 		this.agents = agents;
+		
+		for(Agent agent : this.agents) {
+			agent.setGame(game);
+		}
 	}
 	
 	public static void main(String[] args) {
@@ -34,5 +36,9 @@ public class Controller {
 	
 	public void start() {
 		this.view.start();
+	}
+	
+	public List<Agent> getAgents() {
+		return this.agents;
 	}
 }
