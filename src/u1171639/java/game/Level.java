@@ -93,7 +93,7 @@ public class Level {
 		double varianceX = tempX / this.pigs.size();
 		double varianceY = tempY / this.pigs.size();
 		
-		return new Coordinate2D(tempX, tempY);
+		return new Coordinate2D(varianceX, varianceY);
 	}
 	
 	public Coordinate2D pigStandardDeviation() {
