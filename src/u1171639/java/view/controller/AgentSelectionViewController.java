@@ -1,7 +1,9 @@
 package u1171639.java.view.controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -30,7 +32,7 @@ public class AgentSelectionViewController extends ViewController {
 
 	@Override
 	public String getViewName() {
-		return "agent_selection.fxml";
+		return "peformance-analysis.fxml";
 	}
 	
 	@Override
@@ -49,26 +51,20 @@ public class AgentSelectionViewController extends ViewController {
 		String selection = this.agentSelection.getSelectionModel().getSelectedItem();
 		
 		if(selection != null) {
-			final Agent agent = this.agents.get(selection);
-			
-			// We cannot run the main application execution in the UI thread as
-			// it will lock the UI thread and not allow user interaction. Start
-			// the agent running in a service thread which runs in parallel
-			// with the UI thread
-			Service<Void> service = new Service<Void>() {
-		        @Override
-		        protected Task<Void> createTask() {
-		            return new Task<Void>() {           
-		                @Override
-		                protected Void call() throws Exception {
-		                   agent.run();
-		                   return null;
-		                }
-		            };
-		        }
-		    };
-		    
-		    service.start();
+			startPerformanceAnalysis(this.agents.get(selection));
 		}
+	}
+	
+	private void startPerformanceAnalysis(List<Agent> selectedAgents) {
+		// Get Performance Analysis View Controller
+		PerformanceAnalysisViewController performanceAnalysis = this.getViewManager().performanceAnalysis();
+		performanceAnalysis.runPerformanceAnalysis(selectedAgents);
+		
+	}
+	
+	private void startPerformanceAnalysis(Agent agent) {
+		List<Agent> agents = new ArrayList<Agent>();
+		agents.add(agent);
+		this.startPerformanceAnalysis(agents);
 	}
 }

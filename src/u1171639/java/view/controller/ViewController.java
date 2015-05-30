@@ -37,6 +37,10 @@ public abstract class ViewController {
 		return this.controller;
 	}
 	
+	public ViewManager getViewManager() {
+		return this.viewManager;
+	}
+	
 	public void showView() {
 		if(this.view == null) {
 			this.loadFxmlView(this.getViewName());

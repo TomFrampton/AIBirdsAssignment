@@ -16,13 +16,20 @@ public class NaiveBayesAgent implements Agent {
 	}
 
 	@Override
-	public void run() {
-		System.out.println(this.getName() + " running!");
+	public void setGame(Game game) {
+		this.game = game;
 	}
 
 	@Override
-	public void setGame(Game game) {
-		this.game = game;
+	public void runContinuously() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void runOneLevel() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

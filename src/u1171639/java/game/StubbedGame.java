@@ -8,6 +8,15 @@ public class StubbedGame implements Game {
 	private Random random = new Random(System.currentTimeMillis());
 	
 	/**
+	 * Have we completed all levels in the game?
+	 * @return All levels complete?
+	 */
+	public boolean isCompleted() {
+		// Stubbed game never ends
+		return false;
+	}
+	
+	/**
 	 * Generate the environment for a level which includes the positions and
 	 * dimensions of blocks and positions of pigs
 	 */
@@ -23,9 +32,9 @@ public class StubbedGame implements Game {
 		
 		// For each block
 		for(int i = 0; i < blockCount; ++i) {
-			// Generate the position of the block between 0 and 100
-			double xPos = this.random.nextDouble() * 100;
-			double yPos = this.random.nextDouble() * 100;
+			// Generate the position of the block between 0 and max level dimensions
+			double xPos = this.random.nextDouble() * Level.LEVEL_X;
+			double yPos = this.random.nextDouble() * Level.LEVEL_Y;
 			
 			// Generate dimensions between 1 and 20
 			double width = (this.random.nextDouble() * 19) + 1;
@@ -37,15 +46,15 @@ public class StubbedGame implements Game {
 		
 		// For each pig
 		for(int i = 0; i < pigCount; ++i) {
-			// Generate the position of the pig between 0 and 100
-			double xPos = this.random.nextDouble() * 100;
-			double yPos = this.random.nextDouble() * 100;
+			// Generate the position of the pig between 0 and max level dimensions
+			double xPos = this.random.nextDouble() * Level.LEVEL_X;
+			double yPos = this.random.nextDouble() * Level.LEVEL_Y;
 			
 			// Create a pig using the generated values
 			pigs.add(new Pig(new Position(xPos, yPos)));
 		}
 		
-		return new Level();
+		return new Level(pigs, blocks);
 	}
 
 }

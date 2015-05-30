@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import u1171639.java.view.controller.PerformanceAnalysisViewController;
 import u1171639.java.view.controller.AgentSelectionViewController;
 import u1171639.java.view.controller.ViewController;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +20,8 @@ public class ViewManager {
 	private AnchorPane panel;
 	
 	// View Controllers - one for each view
-	@Autowired private AgentSelectionViewController agentSelectionViewController;	
+	@Autowired private AgentSelectionViewController agentSelectionViewController;
+	@Autowired private PerformanceAnalysisViewController performanceAnalysisViewController;
 
 	public ViewManager() {
 		
@@ -53,5 +55,9 @@ public class ViewManager {
 	
 	public AgentSelectionViewController agentSelection() {
 		return this.agentSelectionViewController;
+	}
+	
+	public PerformanceAnalysisViewController performanceAnalysis() {
+		return this.performanceAnalysisViewController;
 	}
 }

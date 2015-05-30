@@ -6,6 +6,12 @@ public class AIBirdsGame implements Game {
 	public Level getNextLevelInfo() {
 		// Communicate with the AI Birds server to get the
 		// data for the next level.
-		return new Level();
+		return new Level(null, null);
+	}
+
+	@Override
+	public boolean isCompleted() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
