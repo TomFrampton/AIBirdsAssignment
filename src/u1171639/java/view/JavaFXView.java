@@ -34,7 +34,7 @@ public class JavaFXView extends Application implements View {
 			}
 		});
 		
-		applicationViewManager.initStage(stage, 1500, 600);
+		applicationViewManager.initStage(stage, 1200, 600);
 		applicationViewManager.agentSelection().showView();
 	}
 

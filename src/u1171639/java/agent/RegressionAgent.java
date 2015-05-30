@@ -21,7 +21,7 @@ public class RegressionAgent implements Agent {
 	private FastVector featureVector; // Feature vector for our instances
 	private Classifier trainedClassifier;
 	
-	private boolean classifierSuggestionFailed; // Did the classifiers last suggestion fail?
+	private double releaseAngleDivergence = 0.0;
 	
 	private Random random = new Random(System.currentTimeMillis());
 	
@@ -79,14 +79,34 @@ public class RegressionAgent implements Agent {
 			double pigYStandardDev = currentLevel.pigStandardDeviation().getY();
 			
 			// If we have a trained classifier then use it
-			if(this.trainedClassifier != null && !this.classifierSuggestionFailed) {
+			if(this.trainedClassifier != null) {
 				// Create an instance to classify
 				releaseAngle = this.classifyInstance(meanPigXPosition, meanPigYPosition, pigXStandardDev, pigYStandardDev);
+				// Diverge from the suggestion to avoid making the same shot every time potentially going into
+				// an infinite loop
+				releaseAngle += this.releaseAngleDivergence;
+				
+				if(releaseAngle < 0 || releaseAngle > 90) {
+					// No classifier trained yet so use random shot
+					releaseAngle = this.random.nextDouble() * 90;
+				} else {
+					// Move a bit further out and alternate to each side of the classifier's proposed release angle
+					if(this.releaseAngleDivergence < 0) {
+						this.releaseAngleDivergence -= 0.1;
+					} else {
+						this.releaseAngleDivergence += 0.1;
+					}
+					this.releaseAngleDivergence *= -1;
+				}
+				
+				
 			} else {
 				// No classifier trained yet so use random shot
 				releaseAngle = this.random.nextDouble() * 90;
 				
 			}
+			
+			System.out.println(releaseAngle);
 			
 			boolean successfulShot = currentLevel.takeShot(releaseAngle);
 			
@@ -101,9 +121,9 @@ public class RegressionAgent implements Agent {
 				this.trainingExamples.add(instance);
 				
 				this.trainedClassifier = this.trainClassifier();
-				this.classifierSuggestionFailed = false;
-			} else {
-				this.classifierSuggestionFailed = true;
+				// No need to diverge from the classifier's release angle now
+				// Wait until it gives a wrong output given our new input
+				this.releaseAngleDivergence = 0.0;
 			}
 
 			// Increment statistics

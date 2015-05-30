@@ -16,7 +16,7 @@
 	</padding>
    <children>
    	
-   	<LineChart fx:id="agentPerformanceLineChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="500.0">
+   	<LineChart fx:id="agentPerformanceLineChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0">
    		<xAxis>
             <NumberAxis label="Levels Completed" lowerBound="0" tickUnit="1" upperBound="3" />
          </xAxis>

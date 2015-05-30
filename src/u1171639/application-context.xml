@@ -20,9 +20,6 @@
     <bean id="stubbedGame" class="u1171639.java.game.StubbedGame" />
     <bean id="aiBirdsGame" class="u1171639.java.game.AIBirdsGame" />
     
-    <!-- View Manager -->
-    <bean id="viewManager" class="u1171639.java.view.ViewManager" />
-    
     <!-- Views -->
     <bean id="commandLineView" class="u1171639.java.view.CommandLineView" />
     <bean id="javaFxView" class="u1171639.java.view.JavaFXView" />
@@ -39,6 +36,9 @@
     		</list>
     	</constructor-arg>
     </bean>
+    
+    <!-- View Manager -->
+    <bean id="viewManager" class="u1171639.java.view.ViewManager" />
     
     
     
