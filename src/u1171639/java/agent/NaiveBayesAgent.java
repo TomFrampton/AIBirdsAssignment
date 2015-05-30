@@ -32,4 +32,28 @@ public class NaiveBayesAgent implements Agent {
 		
 	}
 
+	@Override
+	public int shotsTakenForCurrentLevel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int totalShotsTaken() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int levelsCompleted() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double averageShotsPerLevel() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

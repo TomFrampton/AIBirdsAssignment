@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox ?>
-<?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart ?>
+<?import javafx.scene.chart.NumberAxis ?>
 
 <VBox xmlns:fx="http://javafx.com/fxml" fx:controller="u1171639.java.view.controller.PerformanceAnalysisViewController">
 	
@@ -10,6 +11,9 @@
 		<Insets top="25" right="25" bottom="10" left="25" />	
 	</padding>
 	
-	<Button text="Hello World" /> 
+	<LineChart fx:id="agentPerformanceLineChart">
+		<xAxis><NumberAxis label="Levels Completed" lowerBound="0" upperBound="3" tickUnit="1"/></xAxis>
+    	<yAxis><NumberAxis label="Average Shots Required" lowerBound="0" upperBound="3" tickUnit="1"/></yAxis>
+	</LineChart>
 
 </VBox>

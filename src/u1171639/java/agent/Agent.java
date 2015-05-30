@@ -12,4 +12,9 @@ public interface Agent {
 	public void runContinuously();
 	public void runOneLevel();
 	
+	public int shotsTakenForCurrentLevel();
+	public int totalShotsTaken();
+	public int levelsCompleted();
+	public double averageShotsPerLevel();
+	
 }

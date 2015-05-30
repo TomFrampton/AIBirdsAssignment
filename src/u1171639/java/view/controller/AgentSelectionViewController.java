@@ -32,7 +32,7 @@ public class AgentSelectionViewController extends ViewController {
 
 	@Override
 	public String getViewName() {
-		return "peformance-analysis.fxml";
+		return "agent-selection.fxml";
 	}
 	
 	@Override
@@ -58,8 +58,9 @@ public class AgentSelectionViewController extends ViewController {
 	private void startPerformanceAnalysis(List<Agent> selectedAgents) {
 		// Get Performance Analysis View Controller
 		PerformanceAnalysisViewController performanceAnalysis = this.getViewManager().performanceAnalysis();
-		performanceAnalysis.runPerformanceAnalysis(selectedAgents);
+		performanceAnalysis.showView();
 		
+		performanceAnalysis.runPerformanceAnalysis(selectedAgents);
 	}
 	
 	private void startPerformanceAnalysis(Agent agent) {

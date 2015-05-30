@@ -15,6 +15,11 @@ public class RegressionAgent implements Agent {
 	// TODO
 	private Random random = new Random(System.currentTimeMillis());
 	
+	// Keep statistics for performance analysis
+	private int totalShotsTaken = 0;
+	private int shotsTakenOnCurrentLevel = 0;
+	private int levelsCompleted = 0;
+	
 	public RegressionAgent() {
 		
 	}
@@ -55,6 +60,10 @@ public class RegressionAgent implements Agent {
 
 	@Override
 	public void runOneLevel() {
+		// Reset level statistics
+		this.shotsTakenOnCurrentLevel = 0;
+		
+		// Get the level environment
 		Level currentLevel = this.game.getNextLevelInfo();
 		
 		// While there are still pigs to kill
@@ -64,7 +73,37 @@ public class RegressionAgent implements Agent {
 			// Generate random trajectory
 			double releaseAngle = this.random.nextDouble() * 90;
 			
-			currentLevel.takeShot(releaseAngle);		
+			currentLevel.takeShot(releaseAngle);
+			
+			// Increment statistics
+			this.totalShotsTaken++;
+			this.shotsTakenOnCurrentLevel++;
+		}
+		
+		this.levelsCompleted++;
+	}
+
+	@Override
+	public int shotsTakenForCurrentLevel() {
+		return this.shotsTakenOnCurrentLevel;
+	}
+
+	@Override
+	public int totalShotsTaken() {
+		return this.totalShotsTaken;
+	}
+
+	@Override
+	public int levelsCompleted() {
+		return this.levelsCompleted;
+	}
+
+	@Override
+	public double averageShotsPerLevel() {
+		if(this.levelsCompleted > 0) {
+			return this.totalShotsTaken / this.levelsCompleted;
+		} else {
+			return Integer.MAX_VALUE;
 		}
 	}
 }
