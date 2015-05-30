@@ -55,6 +55,15 @@ public class AgentSelectionViewController extends ViewController {
 		}
 	}
 	
+	@FXML protected void handleRunAllAgentsClicked(MouseEvent event) {
+		List<Agent> agentList = new ArrayList<Agent>();
+		
+		for(String key : this.agents.keySet()) {
+			agentList.add(this.agents.get(key));
+		}
+		startPerformanceAnalysis(agentList);
+	}
+	
 	private void startPerformanceAnalysis(List<Agent> selectedAgents) {
 		// Get Performance Analysis View Controller
 		PerformanceAnalysisViewController performanceAnalysis = this.getViewManager().performanceAnalysis();

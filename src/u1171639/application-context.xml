@@ -14,6 +14,7 @@
     <!-- Learning Agents -->
     <bean id="naiveBayesAgent" class="u1171639.java.agent.NaiveBayesAgent" />
     <bean id="regressionAgent" class="u1171639.java.agent.RegressionAgent" />
+    <bean id="randomAgent" class="u1171639.java.agent.RandomAgent" />
     
     <!-- Games -->
     <bean id="stubbedGame" class="u1171639.java.game.StubbedGame" />
@@ -32,8 +33,9 @@
     	<constructor-arg name="game" ref="stubbedGame" />
     	<constructor-arg name="agents">
     		<list>
-    			<ref bean="naiveBayesAgent" />
+    			<!-- <ref bean="naiveBayesAgent" /> -->
     			<ref bean="regressionAgent" />
+    			<ref bean="randomAgent" />
     		</list>
     	</constructor-arg>
     </bean>

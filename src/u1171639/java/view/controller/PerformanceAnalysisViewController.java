@@ -2,8 +2,11 @@ package u1171639.java.view.controller;
 
 import java.util.List;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
@@ -26,34 +29,48 @@ public class PerformanceAnalysisViewController extends ViewController {
 
 	@Override
 	public void initialise() {
-		// TODO Auto-generated method stub
-		
+
 	}
 	
-	public void runPerformanceAnalysis(List<Agent> agents) {
+	public void runPerformanceAnalysis(final List<Agent> agents) {
 		this.agents = agents;
 		
 		for(int i = 0; i < agents.size(); ++i) {
 			XYChart.Series<Number, Number> series = new XYChart.Series<Number, Number>();
+			series.setName(agents.get(i).getName());
 			this.agentPerformanceLineChart.getData().add(series);
 		}
 		
-		//for(;;) {
-			for(Agent agent : this.agents) {
-				agent.runOneLevel();
-				updateChart();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					for(;;Thread.sleep(200)) {
+						for(Agent agent : agents) {
+							agent.runOneLevel();
+						}
+						updateChart();
+					}
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-		//}
+		}).start();
 	}
 	
 	private void updateChart() {
-		
-		for(int i = 0; i < this.agents.size(); ++i) {
-			int x = this.agents.get(i).levelsCompleted() - 1;
-			double y = this.agents.get(i).averageShotsPerLevel();
-			
-			this.agentPerformanceLineChart.getData().get(0).getData().add(new XYChart.Data<Number, Number>(x,y));
-		}
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				for(int i = 0; i < agents.size(); ++i) {
+					int x = agents.get(i).levelsCompleted() - 1;
+					double y = agents.get(i).averageShotsPerLevel();
+					
+					agentPerformanceLineChart.getData().get(i).getData().add(new XYChart.Data<Number, Number>(x,y));
+				}
+			}
+		});
 	}
 
 }

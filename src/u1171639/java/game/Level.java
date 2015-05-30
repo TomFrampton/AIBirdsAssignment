@@ -33,12 +33,12 @@ public class Level {
 	public void setBlocks(List<Block> blocks) {
 		this.blocks = blocks;
 	}
-	
-	public Position meanPigPosition() throws ComponentsNotDefinedException {
+	// TODO
+	public Coordinate2D meanPigPosition() { // throws ComponentsNotDefinedException {
 		// If no pigs have been defined for this level yet we cannot calculate
 		// their average position. Throw an exception.
 		if(this.pigs == null || this.pigs.isEmpty()) {
-			throw new ComponentsNotDefinedException();
+			//throw new ComponentsNotDefinedException();
 		}
 		
 		double totalX = 0;
@@ -52,28 +52,55 @@ public class Level {
 		double meanX = totalX / this.pigs.size();
 		double meanY = totalY / this.pigs.size();
 		
-		return new Position(meanX, meanY);
+		return new Coordinate2D(meanX, meanY);
 	}
 	
-	public Position meanBlockPosition() throws ComponentsNotDefinedException {
-		// If no blocks have been defined for this level yet we cannot calculate
-		// their average position. Throw an exception.
-		if(this.blocks == null || this.blocks.isEmpty()) {
-			throw new ComponentsNotDefinedException();
+//	public Position meanBlockPosition() throws ComponentsNotDefinedException {
+//		// If no blocks have been defined for this level yet we cannot calculate
+//		// their average position. Throw an exception.
+//		if(this.blocks == null || this.blocks.isEmpty()) {
+//			throw new ComponentsNotDefinedException();
+//		}
+//		
+//		double totalX = 0;
+//		double totalY = 0;
+//		
+//		for(Block block : this.blocks) {
+//			totalX += block.getPosition().getX();
+//			totalY += block.getPosition().getY();
+//		}
+//		
+//		double meanX = totalX / this.blocks.size();
+//		double meanY = totalY / this.blocks.size();
+//		
+//		return new Position(meanX, meanY);
+//	}
+	
+	public Coordinate2D pigVariance() {
+		Coordinate2D meanPigPosition = this.meanPigPosition();
+		// Calculate variance in x and y values
+		double meanX = meanPigPosition.getX();
+		double tempX = 0;
+		
+		double meanY = meanPigPosition.getY();
+		double tempY = 0;
+		
+		for(Pig pig : this.pigs) {
+			tempX += (meanX - pig.getPosition().getX()) *  (meanX - pig.getPosition().getX());
+			tempY += (meanY - pig.getPosition().getY()) *  (meanY - pig.getPosition().getY());
 		}
 		
-		double totalX = 0;
-		double totalY = 0;
+		double varianceX = tempX / this.pigs.size();
+		double varianceY = tempY / this.pigs.size();
 		
-		for(Block block : this.blocks) {
-			totalX += block.getPosition().getX();
-			totalY += block.getPosition().getY();
-		}
-		
-		double meanX = totalX / this.blocks.size();
-		double meanY = totalY / this.blocks.size();
-		
-		return new Position(meanX, meanY);
+		return new Coordinate2D(tempX, tempY);
+	}
+	
+	public Coordinate2D pigStandardDeviation() {
+		Coordinate2D variance = this.pigVariance();
+		variance.setX(Math.sqrt(variance.getX()));
+		variance.setY(Math.sqrt(variance.getY()));
+		return variance;
 	}
 	
 	public boolean takeShot(double releaseAngle) {

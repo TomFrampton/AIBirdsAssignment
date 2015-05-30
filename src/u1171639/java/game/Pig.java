@@ -2,7 +2,7 @@ package u1171639.java.game;
 
 public class Pig extends Component {
 
-	public Pig(Position position) {
+	public Pig(Coordinate2D position) {
 		super(position);
 	}
 

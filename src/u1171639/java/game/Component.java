@@ -1,17 +1,17 @@
 package u1171639.java.game;
 
 public class Component {
-	private Position position;
+	private Coordinate2D position;
 	
-	public Component(Position position) {
+	public Component(Coordinate2D position) {
 		this.position = position;
 	}
 
-	public Position getPosition() {
+	public Coordinate2D getPosition() {
 		return position;
 	}
 
-	public void setPosition(Position position) {
+	public void setPosition(Coordinate2D position) {
 		this.position = position;
 	}
 }

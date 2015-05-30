@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class JavaFXView extends Application implements View {
 
@@ -23,7 +26,15 @@ public class JavaFXView extends Application implements View {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-		applicationViewManager.initStage(stage, 600, 200);
+		stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+			@Override
+			public void handle(WindowEvent e) {
+				Platform.exit();
+				System.exit(0);
+			}
+		});
+		
+		applicationViewManager.initStage(stage, 1500, 600);
 		applicationViewManager.agentSelection().showView();
 	}
 

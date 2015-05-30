@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox ?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Button?>
 <?import javafx.geometry.Insets?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="u1171639.java.view.controller.AgentSelectionViewController">
+<VBox alignment="CENTER" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="u1171639.java.view.controller.AgentSelectionViewController">
 	
 	<padding>
-		<Insets top="25" right="25" bottom="10" left="25" />	
+		<Insets bottom="10" left="25" right="25" top="25" />	
 	</padding>
-	
-	<ComboBox fx:id="agentSelection" />
-
-	<Button fx:id="runAgentButton" onMouseClicked="#handleRunAgentClicked" text="Run Agent" />
+   <children>
+   	
+   	<ComboBox fx:id="agentSelection" minHeight="-Infinity" minWidth="-Infinity" prefHeight="35.0" prefWidth="186.0" promptText="Select Agent...">
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </ComboBox>
+   
+   	<Button fx:id="runAgentButton" onMouseClicked="#handleRunAgentClicked" text="Run Selected Agent">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+   	<Button fx:id="runAllAgentsButton" onMouseClicked="#handleRunAllAgentsClicked" text="Run All Agents">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+   </children>
 
 </VBox>

@@ -41,7 +41,7 @@ public class StubbedGame implements Game {
 			double height = (this.random.nextDouble() * 19) + 1;
 			
 			// Create a new block using the generated values
-			blocks.add(new Block(new Position(xPos, yPos), new Dimensions(width, height)));
+			blocks.add(new Block(new Coordinate2D(xPos, yPos), new Dimensions(width, height)));
 		}
 		
 		// For each pig
@@ -51,7 +51,7 @@ public class StubbedGame implements Game {
 			double yPos = this.random.nextDouble() * Level.LEVEL_Y;
 			
 			// Create a pig using the generated values
-			pigs.add(new Pig(new Position(xPos, yPos)));
+			pigs.add(new Pig(new Coordinate2D(xPos, yPos)));
 		}
 		
 		return new Level(pigs, blocks);

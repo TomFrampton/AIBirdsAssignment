@@ -33,8 +33,8 @@ public class Weka {
 		 
 		 // Create instance
 		 Instance instance = new Instance(3);
-		 instance.setValue((Attribute) vector.elementAt(0), 1.0);
-		 instance.setValue((Attribute) vector.elementAt(1), 1.0);
+		 instance.setValue((Attribute) vector.elementAt(0), 39.74246097314947);
+		 instance.setValue((Attribute) vector.elementAt(1), 39.74246097314947);
 		 instance.setValue((Attribute) vector.elementAt(2), 1.0);
 		 
 		 // Add the instance
@@ -45,7 +45,12 @@ public class Weka {
 		 classifier.buildClassifier(trainingSet);
 		 
 		 // Test the classifier
+		 Instance testInstance = new Instance(3);
+		 testInstance.setDataset(trainingSet);
 		 
+		 double result = classifier.classifyInstance(testInstance);
+		 
+		 System.out.println("Worked");
 		
 	}
 }

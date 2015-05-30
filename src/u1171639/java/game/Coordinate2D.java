@@ -1,11 +1,11 @@
 package u1171639.java.game;
 
-public class Position {
+public class Coordinate2D {
 
 	private double x;
 	private double y;
 
-	public Position(double x, double y) {
+	public Coordinate2D(double x, double y) {
 		this.x = x;
 		this.y = y;
 	}

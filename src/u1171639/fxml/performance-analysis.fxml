@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.VBox ?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.LineChart ?>
 <?import javafx.scene.chart.NumberAxis ?>
 
-<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="u1171639.java.view.controller.PerformanceAnalysisViewController">
+<VBox xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="u1171639.java.view.controller.PerformanceAnalysisViewController">
 	
 	<padding>
-		<Insets top="25" right="25" bottom="10" left="25" />	
+		<Insets bottom="10" left="25" right="25" top="25" />	
 	</padding>
-	
-	<LineChart fx:id="agentPerformanceLineChart">
-		<xAxis><NumberAxis label="Levels Completed" lowerBound="0" upperBound="3" tickUnit="1"/></xAxis>
-    	<yAxis><NumberAxis label="Average Shots Required" lowerBound="0" upperBound="3" tickUnit="1"/></yAxis>
-	</LineChart>
+   <children>
+   	
+   	<LineChart fx:id="agentPerformanceLineChart" minHeight="-Infinity" minWidth="-Infinity" prefHeight="528.0" prefWidth="500.0">
+   		<xAxis>
+            <NumberAxis label="Levels Completed" lowerBound="0" tickUnit="1" upperBound="3" />
+         </xAxis>
+       	<yAxis>
+            <NumberAxis label="Average Shots Required Per Level" lowerBound="0" tickUnit="1" upperBound="3" />
+         </yAxis>
+   	</LineChart>
+   </children>
 
 </VBox>
